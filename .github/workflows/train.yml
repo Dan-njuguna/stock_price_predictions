@@ -1,0 +1,36 @@
+name: "Initialize Training before PR"
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    initialize_train_and_create_pr:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            
+            - name: Set up Python
+              uses: actions/setup-python@v2
+              with:
+                  python-version: '3.13'
+            
+            - name: Setup DVC
+              uses: iterative/setup-dvc@v2
+            
+            - name: Setup CML
+              uses: iterative/setup-cml@v1
+            
+            - name: Install dependencies
+              run: |
+                    python -m pip install --upgrade pip
+                    pip install -r requirements.txt
+            
+            - name: Run DVC Pipeline
+              run: |
+                dvc pull
+                dvc repro train
+                dvc push
+        
