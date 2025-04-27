@@ -42,19 +42,10 @@ Located in `./data`:
 1. **Start with Indices**
     - More stable patterns
     - Better for model training
-    - Example: `data/indices/sp500_daily.csv`
+    - Example: `data/train/indices/sp500.csv`
 
 2. **Graduate to Stocks**
     - Complex patterns
     - Multiple factors
-    - Example: `data/stocks/individual/*.csv`
-
-## 🛠️ Model Progression
-
-| Level | Dataset | Models | Data Location |
-|-------|---------|--------|---------------|
-| 🟡 Beginner->Intermediate | Indices | ARIMA, Prophet | `data/indices/` |
-| 🔴 Advanced | Stocks | Transformers, GNNs | `data/stocks/` |
-
-> 💡 **Pro Tip**: Start with index prediction using simple models, then gradually increase complexity.
+    - Example: `data/train/stocks/*.csv`
 
